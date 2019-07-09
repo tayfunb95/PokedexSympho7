@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Refpokemons list</h1>
+    <table class='table table-secondary'>
+        <thead class="thead-dark">
+
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Evolution</th>
+                <th>Starter</th>
+                <th>Typecourbeniveau</th>
+                <th>Type1</th>
+                <th>Type2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for refPokemon in refPokemons %}
+
+            <tr>
+                <td><a href="{{ path('refpokemon_show', { 'id': refPokemon.id }) }}">{{ refPokemon.id }}</a></td>
+                <td>{{ refPokemon.nom }}</td>
+                <td>{% if refPokemon.evolution %}Yes{% else %}No{% endif %}</td>
+                <td>{% if refPokemon.starter %}Yes{% else %}No{% endif %}</td>
+                <td>{{ refPokemon.typeCourbeNiveau }}</td>
+                <td>{{ refPokemon.type1 }}</td>
+                <td>{{ refPokemon.type2 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('refpokemon_show', { 'id': refPokemon.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('refpokemon_edit', { 'id': refPokemon.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </thead>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('refpokemon_new') }}">Créer un nouveau pokémon</a>
+        </li>
+    </ul>
+{% endblock %}

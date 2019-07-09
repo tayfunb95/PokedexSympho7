@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Refpokemon</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ refPokemon.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ refPokemon.nom }}</td>
+            </tr>
+            <tr>
+                <th>Evolution</th>
+                <td>{% if refPokemon.evolution %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Starter</th>
+                <td>{% if refPokemon.starter %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Typecourbeniveau</th>
+                <td>{{ refPokemon.typeCourbeNiveau }}</td>
+            </tr>
+            <tr>
+                <th>Type1</th>
+                <td>{{ refPokemon.type1 }}</td>
+            </tr>
+            <tr>
+                <th>Type2</th>
+                <td>{{ refPokemon.type2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('refpokemon_index') }}">Retourner à la liste</a>
+        </li>
+        <li>
+            <a href="{{ path('refpokemon_edit', { 'id': refPokemon.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

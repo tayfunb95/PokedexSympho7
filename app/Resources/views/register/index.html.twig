@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Trainers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Nb Pièces</th>
+                <th>Starter Id</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trainer in trainers %}
+            <tr>
+                <td><a href="{{ path('trainer_show', { 'id': trainer.id }) }}">{{ trainer.username }}</a></td>
+                <td>{{ trainer.username }}</td>
+                <td>{{ trainer.email }}</td>
+                <td>{{ trainer.nbPieces }}</td>
+                <td>{{ trainer.starterId }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
